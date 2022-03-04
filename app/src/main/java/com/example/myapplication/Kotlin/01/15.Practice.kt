@@ -14,6 +14,7 @@ fun main(array: Array<String>) {
     a.removeAt(1)
     println(a)
 
+
     val b = mutableSetOf<Int>(1, 2, 3, 4)
     b.add(2)
     println(b)
@@ -25,6 +26,6 @@ fun main(array: Array<String>) {
     println(c)
     c.replace("two", 3) //안드로이드 api 차이
     println(c)
-    println(c.keys)
+    println(c.containsKey("one"))
     println(c.values)
 }

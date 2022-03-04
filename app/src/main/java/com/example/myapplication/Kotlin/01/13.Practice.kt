@@ -13,7 +13,7 @@ fun main(array: Array<String>){
     println(number2)
 
     //array를 만드는방법 3, int만을 넣을수 있는 array
-    val a1 = intArrayOf(1,2,3)
+    var a1 = intArrayOf(1,2,3)
     val a2 = charArrayOf('a')
     // double , boolean 다 가능
 

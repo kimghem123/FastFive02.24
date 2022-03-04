@@ -9,6 +9,7 @@ fun main(array: Array<String>){
     val list2 = mutableListOf<Boolean>()
     for(i in 0 until list1.size){
         if(list1.get(i)%2==1){
+
             list2.add(false)
         }else{
             list2.add(true)

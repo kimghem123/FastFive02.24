@@ -4,7 +4,7 @@ package com.example.myapplication.Kotlin
 
 fun main(array: Array<String>){
 
-    var group1 = arrayOf<Int>(1,2,3,4,5)
+    var group1 = arrayOf<Int>(1,2,3,4,5,5)
     println(group1[0])
 
     //타입을 적어주지 않으면 아무런 타입이나 가능
@@ -17,9 +17,9 @@ fun main(array: Array<String>){
     val test1 = group1.get(0)
 
     //배열 값 바꾸기
-
+    println(group1)
     group1.set(0,100)
     println(group1[0])
-
+    println(group1.size)
     group1[0] = 200
 }
