@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2075" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/final_test.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/frame_layout_09.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/frame_layout_11.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/imageview_13.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/linear_layout.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/linear_layout_practice.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/padding_margin_08.xml" value="0.36614583333333334" />
@@ -13,6 +16,7 @@
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/relative_layout_05.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/relative_layout_06.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/relative_layout_10.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/scrollview_12.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/test.xml" value="0.36614583333333334" />
       </map>
     </option>
