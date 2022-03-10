@@ -5,17 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="#000000"/>
+    tools:context=".Listener">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="50dp"
-        android:text="안녕하세요"/>
-</LinearLayout>
+        android:text="hello"
+        android:id="@+id/hello"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
 
+</LinearLayout>
