@@ -10,10 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".Intent2"
-            android:exported="false" />
-        <activity
-            android:name=".Intent1"
+            android:name=".Intent_Test"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +19,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Circulator"
+            android:name=".Intent2"
+            android:exported="false" />
+        <activity
+            android:name=".Intent1"
             android:exported="true">
+
         </activity>
+        <activity
+            android:name=".Circulator"
+            android:exported="true" />
         <activity
             android:name=".Listener"
             android:exported="true" />
