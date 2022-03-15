@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".Intent_Test"
+            android:name=".NullSafety"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +19,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".FragmentActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".Intent_Test"
+            android:exported="true" />
+        <activity
             android:name=".Intent2"
             android:exported="false" />
         <activity
             android:name=".Intent1"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Circulator"
             android:exported="true" />
