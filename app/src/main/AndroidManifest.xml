@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".NullSafety"
+            android:name=".ThreadActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +19,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Context"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".Resource"
+            android:exported="true" />
+        <activity
+            android:name=".NullSafety"
+            android:exported="true" />
+        <activity
             android:name=".FragmentActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Intent_Test"
             android:exported="true" />
