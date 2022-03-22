@@ -6,10 +6,18 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".LibraryActivity">
-
-    <ImageView
+    <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:id="@+id/btn1"/>
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/glide"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/glide2"/>
 
 </LinearLayout>
