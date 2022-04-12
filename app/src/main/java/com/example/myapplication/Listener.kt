@@ -17,9 +17,9 @@ class Listener : AppCompatActivity() {
 //        val textView : TextView = findViewById(R.id.hello)
         //2> xml을 import해서 가져온다
 //        hello.
-
         //익명함수
         //1.람다방식
+
         hello.setOnClickListener {
             Log.d("Click","Click")
         }

@@ -13,9 +13,11 @@
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_intent_test.xml" value="0.2359375" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_intent_test2.xml" value="0.2359375" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_library.xml" value="0.34739583333333335" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_list_view.xml" value="0.25" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_listener.xml" value="0.22" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_null_safety.xml" value="0.240625" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_number_book.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_resource.xml" value="0.240625" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_test.xml" value="0.240625" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_thread.xml" value="0.240625" />
@@ -27,6 +29,8 @@
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/item_view.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/linear_layout.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/linear_layout_practice.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/number_inner_view.xml" value="0.34739583333333335" />
+        <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/number_view.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/padding_margin_08.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/relative_layout_04.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/guiheum/AndroidStudioProjects/MyApplication/app/src/main/res/layout/relative_layout_05.xml" value="0.36614583333333334" />
