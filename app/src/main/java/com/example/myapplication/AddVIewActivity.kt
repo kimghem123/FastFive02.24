@@ -25,8 +25,6 @@ class AddVIewActivity : AppCompatActivity() {
             val itemView = inflater.inflate(R.layout.item_view,null)
             val carNameView = itemView.findViewById<TextView>(R.id.car_name)
             val carEngineView = itemView.findViewById<TextView>(R.id.car_engine)
-            val carImageView = itemView.findViewById<ImageView>(R.id.car_image)
-            Glide.with(itemView).load("http://img.danawa.com/cp_images/service/33/4447351/7f9a3302.jpg").into(carImageView)
             carNameView.setText(carList.get(i).name)
             carEngineView.setText(carList.get(i).engine)
             container.addView(itemView)

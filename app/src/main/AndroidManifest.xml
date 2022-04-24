@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".ListViewActivity"
+            android:name=".RecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddVIewActivity"
+            android:name=".ListViewActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".AddVIewActivity"
+            android:exported="true" />
         <activity
             android:name=".LibraryActivity"
             android:exported="true" />

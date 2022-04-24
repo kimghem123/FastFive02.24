@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_list_view.*
+import kotlinx.android.synthetic.main.item_view.view.*
 
 class ListViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,12 @@ class ListViewActivity : AppCompatActivity() {
 
         val adapter = ListViewAdapter(carList, LayoutInflater.from(this))
         listView.adapter = adapter
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val carName = (adapter.getItem(position) as CarForList).name
+            val carEngine = (adapter.getItem(position) as CarForList).engine
+
+            Toast.makeText(this,carName+" "+ carEngine,Toast.LENGTH_SHORT).show()
+        }
     }
 }
 
@@ -45,12 +53,27 @@ class ListViewAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = layoutInflater.inflate(R.layout.item_view,null)
-        val carNameTextView = view.findViewById<TextView>(R.id.car_name)
-        val carEngineTextView = view.findViewById<TextView>(R.id.car_engine)
+        val view : View
+        var holder : ViewHolder = ViewHolder()
+        if(convertView==null){
+            view = layoutInflater.inflate(R.layout.item_view,null)
+            holder.carEngine = view.findViewById(R.id.car_engine)
+            holder.carName = view.findViewById(R.id.car_name)
 
-        carNameTextView.setText(carForList.get(position).name)
-        carEngineTextView.setText(carForList.get(position).engine)
+            view.tag = holder
+        }
+        else{
+            holder = convertView.tag as ViewHolder
+            view = convertView
+        }
+        holder.carName?.setText(carForList.get(position).name)
+        holder.carEngine?.setText(carForList.get(position).name)
+
         return view
     }
+}
+
+class ViewHolder{
+    var carName: TextView? = null
+    var carEngine: TextView? = null
 }
