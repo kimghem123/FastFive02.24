@@ -44,7 +44,6 @@ class RecyclerViewAdapter(
                 val position:Int = adapterPosition
                 val engineName = itemList.get(position).engine
                 val carName = itemList.get(position).name
-                Log.d("engine",engineName)
             }
         }
     }
