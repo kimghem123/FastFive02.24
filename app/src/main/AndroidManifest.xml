@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".TapPager2Activity"
+            android:name=".RealmActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +21,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TapPagerActivity"
+            android:name=".SharedPreference"
+            android:exported="true"></activity>
+        <activity
+            android:name=".TapPager2Activity"
             android:exported="true">
         </activity>
         <activity
+            android:name=".TapPagerActivity"
+            android:exported="true" />
+        <activity
             android:name=".RecyclerViewActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ListViewActivity"
             android:exported="true" />
