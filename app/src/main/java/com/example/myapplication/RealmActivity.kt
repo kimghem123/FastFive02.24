@@ -24,7 +24,7 @@ class RealmActivity : AppCompatActivity() {
             realm.executeTransaction{
              //하나의 작업단위
                 with(it.createObject(School::class.java)){
-                    this.name = "대학교"
+                    this.name = "서울대학교"
                     this.location = "서울"
                 }
             }
