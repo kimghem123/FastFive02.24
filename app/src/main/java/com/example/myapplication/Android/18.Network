@@ -1,0 +1,20 @@
+
+
+네트워크
+-> 통신
+
+Database <---> Server <---> Client(app,wep...)
+
+Local datebase의 한계
+    - 동기화가 어렵다
+    - 상호작용이 불가능 하다
+
+서버와 통신하는 방법
+- 해당 url로 요청한다
+- 인증정보르 보낸다
+- Json 형식을 사용해서 데이터를 보낸다
+- Javascript object notation -> javascript에서 객체를 만들때 사용하는 표현식이다
+
+JSON 형식
+- [] -> List
+- {} -> 객체

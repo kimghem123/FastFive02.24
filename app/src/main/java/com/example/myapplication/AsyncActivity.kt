@@ -1,16 +1,36 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_async.*
 import java.lang.Exception
 
 class AsyncActivity : AppCompatActivity() {
+    var task: BackgroundAsyncTask? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_async)
+
+
+        start.setOnClickListener {
+            task = BackgroundAsyncTask(progressBar, ment)
+            task?.execute()
+        }
+
+        stop.setOnClickListener {
+            //task?.cancel(true)
+            startActivity(Intent(this,Intent2::class.java))
+        }
+    }
+
+    override fun onPause() { //액티비티가 바뀌었을때 멈추려면 라이프사이클 사용
+        task?.cancel(true)
+        super.onPause()
     }
 }
 
@@ -31,6 +51,7 @@ class BackgroundAsyncTask(
     override fun doInBackground(vararg params: Int?): Int {
         while(isCancelled()==false){
             percent++
+            Log.d("async","value : "+percent)
             if(percent>100){
                 break
             }
