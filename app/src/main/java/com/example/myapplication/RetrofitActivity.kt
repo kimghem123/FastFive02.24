@@ -30,7 +30,7 @@ class RetrofitActivity : AppCompatActivity() {
             .build()
 
         val service = retrofit.create(RetrofitService::class.java)
-
+        //GET
         service.getStudentList().enqueue(object : Callback<ArrayList<PersonFromServer>> {
             override fun onResponse(
                 call: Call<ArrayList<PersonFromServer>>,
@@ -45,7 +45,10 @@ class RetrofitActivity : AppCompatActivity() {
 
                     val error = response.errorBody()
                     val header = response.headers()
-                    val adapter = RetrofitRecyclerViewAdapter(response.body()!!, LayoutInflater.from(this@RetrofitActivity))
+                    val adapter = RetrofitRecyclerViewAdapter(
+                        response.body()!!,
+                        LayoutInflater.from(this@RetrofitActivity)
+                    )
                     RetrofitRecycler.adapter = adapter
                     RetrofitRecycler.layoutManager = LinearLayoutManager(this@RetrofitActivity)
                 }
@@ -53,6 +56,43 @@ class RetrofitActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ArrayList<PersonFromServer>>, t: Throwable) {
                 Log.d("retrofit", "ERROR")
+            }
+        })
+        //POST 1
+        /*val params = HashMap<String,Any>()
+        params.put("name","곰돌이")
+        params.put("age",20)
+        params.put("intro","와구와구")
+        service.createStudent(params).enqueue(object : Callback<PersonFromServer>{
+            override fun onResponse(
+                call: Call<PersonFromServer>,
+                response: Response<PersonFromServer>
+            ) {
+                if(response.isSuccessful){
+                    val person = response.body()
+                    Log.d("retrofit","name :"+person?.name)
+                }
+            }
+
+            override fun onFailure(call: Call<PersonFromServer>, t: Throwable) {
+            }
+        })*/
+
+        //POST 2
+        val person = PersonFromServer(name = "곰돌이2", age = 21, intro = "와구와구")
+        service.createStudentEasy(person).enqueue(object : Callback<PersonFromServer> {
+            override fun onResponse(
+                call: Call<PersonFromServer>,
+                response: Response<PersonFromServer>
+            ) {
+                if (response.isSuccessful) {
+                    val person = response.body()
+                    Log.d("retrofit", "name :" + person?.name)
+                }
+            }
+
+            override fun onFailure(call: Call<PersonFromServer>, t: Throwable) {
+
             }
         })
 
