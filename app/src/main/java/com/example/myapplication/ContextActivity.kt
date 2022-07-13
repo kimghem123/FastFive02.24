@@ -3,12 +3,12 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class Context : AppCompatActivity() {
+class ContextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_context)
 
-        val context:Context = this
-        val applicationContext: Context = getApplicationContext() as Context
+        val context:ContextActivity = this
+        val applicationContext: ContextActivity = getApplicationContext() as ContextActivity
     }
 }

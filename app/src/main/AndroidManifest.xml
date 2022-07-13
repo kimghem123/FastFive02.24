@@ -65,7 +65,7 @@
             android:name=".ThreadActivity"
             android:exported="true" />
         <activity
-            android:name=".Context"
+            android:name=".ContextActivity"
             android:exported="true" />
         <activity
             android:name=".Resource"

@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -17,7 +18,9 @@ class MasterApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Stetho.initializeWithDefaults(this) //여기서 Stetho를 이니셜 해줘야 작동
         createRetrofit()
+        //chrome://inspect/#devices
     }
 
     fun createRetrofit() {

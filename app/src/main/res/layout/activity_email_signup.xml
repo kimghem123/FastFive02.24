@@ -36,6 +36,7 @@
             android:textStyle="bold"/>
 
         <EditText
+            android:inputType="textPassword"
             android:gravity="center"
             android:id="@+id/password1_inputbox"
             android:layout_width="match_parent"
@@ -47,6 +48,7 @@
             android:textStyle="bold"/>
 
         <EditText
+            android:inputType="textPassword"
             android:gravity="center"
             android:id="@+id/password2_inputbox"
             android:layout_width="match_parent"

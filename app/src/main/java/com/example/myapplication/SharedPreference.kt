@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +27,7 @@ class SharedPreference : AppCompatActivity() {
         //sp1 -> Sharedpreference
         //       (Key,Value) -> ("hello","안녕하세요")
         save_btn.setOnClickListener {
-            val sharedPreference = getSharedPreferences("sp1", MODE_PRIVATE)
+            val sharedPreference = getSharedPreferences("sp1", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sharedPreference.edit()
             editor.putString("hello", "안녕하세요")
             editor.putString("goodbye", "안녕히가세요")
