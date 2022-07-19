@@ -58,8 +58,7 @@ class MasterApplication : Application() {
         val sharedPreference = getSharedPreferences("login_sp", Context.MODE_PRIVATE)
         val token = sharedPreference.getString("login_sp", "null")
         if (token != "null") return true
-        else return true
-
+        else return false
     }
 
     fun getUserToken(): String? {

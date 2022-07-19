@@ -2,12 +2,13 @@ package com.example.myapplication
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_intent_test2.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -15,26 +16,33 @@ class EmailSignupActivity : AppCompatActivity() {
     lateinit var userNameView: EditText
     lateinit var userPassword1View: EditText
     lateinit var userPassword2View: EditText
-    lateinit var register: Button
+    lateinit var registerBtn: Button
+    lateinit var loginBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_signup)
 
         initView(this@EmailSignupActivity)
-        setupListener()
+        setupListener(this@EmailSignupActivity)
     }
 
-    fun setupListener() { //회원가입 리스너
-        register.setOnClickListener { //회원가입
+    fun setupListener(activity: Activity) { //회원가입 리스너
+        registerBtn.setOnClickListener { //회원가입
             register(this@EmailSignupActivity)
         }
+        loginBtn.setOnClickListener {
+            startActivity(
+                Intent(this@EmailSignupActivity,LoginActivity::class.java)
+            )
+        }
+
     }
 
     fun register(activity: Activity) {
-        val username = userNameView.text.toString()
-        val password1 = userPassword1View.text.toString()
-        val password2 = userPassword2View.text.toString()
+        val username = getUserName()
+        val password1 = getUserPassword1()
+        val password2 = getUserPassword2()
 
         (application as MasterApplication).service.register(username,password1,password2) //서버에서 객체를 받지 않아 직접 field로 보냄
             .enqueue(object : retrofit2.Callback<User> {
@@ -44,9 +52,14 @@ class EmailSignupActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if(response.isSuccessful){
                         Toast.makeText(activity, "가입에 성공하였습니다", Toast.LENGTH_LONG).show()
+                        Log.d("register","성공")
                         val user = response.body()
                         val token = user!!.token!!
                         saveUserToken(token, activity)
+                        (application as MasterApplication).createRetrofit() //호출함으로써 token이 있는 헤더를 달아줌
+                        activity.startActivity(
+                            Intent(this@EmailSignupActivity,OutstargramPostListActivity::class.java)
+                        )
                     }
                 }
 
@@ -68,7 +81,8 @@ class EmailSignupActivity : AppCompatActivity() {
         userNameView = activity.findViewById(R.id.userName_inputbox)
         userPassword1View = activity.findViewById(R.id.password1_inputbox)
         userPassword2View = activity.findViewById(R.id.password2_inputbox)
-        register = activity.findViewById(R.id.register)
+        registerBtn = activity.findViewById(R.id.register)
+        loginBtn = activity.findViewById(R.id.login)
     }
 
 
