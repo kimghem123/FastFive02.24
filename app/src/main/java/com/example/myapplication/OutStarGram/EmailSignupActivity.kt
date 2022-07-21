@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.OutStarGram
 
 import android.app.Activity
 import android.content.Context
@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.myapplication.R
 import retrofit2.Call
 import retrofit2.Response
 
@@ -21,10 +22,18 @@ class EmailSignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_email_signup)
 
-        initView(this@EmailSignupActivity)
-        setupListener(this@EmailSignupActivity)
+        if((application as MasterApplication).checkIsLogin()){
+            finish()
+            this.startActivity(
+                Intent(this@EmailSignupActivity, OutstargramPostListActivity::class.java)
+            )
+        }
+        else{
+            setContentView(R.layout.activity_email_signup)
+            initView(this@EmailSignupActivity)
+            setupListener(this@EmailSignupActivity)
+        }
     }
 
     fun setupListener(activity: Activity) { //회원가입 리스너
@@ -33,7 +42,7 @@ class EmailSignupActivity : AppCompatActivity() {
         }
         loginBtn.setOnClickListener {
             startActivity(
-                Intent(this@EmailSignupActivity,LoginActivity::class.java)
+                Intent(this@EmailSignupActivity, LoginActivity::class.java)
             )
         }
 
@@ -56,9 +65,10 @@ class EmailSignupActivity : AppCompatActivity() {
                         val user = response.body()
                         val token = user!!.token!!
                         saveUserToken(token, activity)
+                        saveUserId(username, this@EmailSignupActivity)
                         (application as MasterApplication).createRetrofit() //호출함으로써 token이 있는 헤더를 달아줌
                         activity.startActivity(
-                            Intent(this@EmailSignupActivity,OutstargramPostListActivity::class.java)
+                            Intent(this@EmailSignupActivity, OutstargramPostListActivity::class.java)
                         )
                     }
                 }
@@ -76,7 +86,12 @@ class EmailSignupActivity : AppCompatActivity() {
         editor.putString("login_sp", token)
         editor.commit()
     }
-
+    fun saveUserId(id: String, activity: Activity) {
+        val sp = activity.getSharedPreferences("id_sp", Context.MODE_PRIVATE)
+        val editor = sp.edit()
+        editor.putString("id_sp", id)
+        editor.commit()
+    }
     fun initView(activity: Activity) {
         userNameView = activity.findViewById(R.id.userName_inputbox)
         userPassword1View = activity.findViewById(R.id.password1_inputbox)

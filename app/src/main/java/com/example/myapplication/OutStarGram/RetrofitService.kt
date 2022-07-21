@@ -1,5 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.OutStarGram
 
+import com.example.myapplication.PersonFromServer
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -15,7 +16,7 @@ interface RetrofitService {
 
     @POST("json/students/")
     fun createStudentEasy(
-        @Body params:PersonFromServer
+        @Body params: PersonFromServer
     ):Call<PersonFromServer>
 
     @POST("user/signup/")

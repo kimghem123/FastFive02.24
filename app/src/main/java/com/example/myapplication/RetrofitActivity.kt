@@ -1,7 +1,5 @@
 package com.example.myapplication
 
-import android.content.Context
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_network.*
+import com.example.myapplication.OutStarGram.RetrofitService
 import kotlinx.android.synthetic.main.activity_retrofit.*
 import retrofit2.Call
 import retrofit2.Callback

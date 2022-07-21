@@ -1,5 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.OutStarGram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,35 +13,56 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.example.myapplication.R
 import kotlinx.android.synthetic.main.activity_outstargram_post_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.zip.Inflater
 
 class OutstargramPostListActivity : AppCompatActivity() {
     lateinit var glide: RequestManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_outstargram_post_list)
 
         glide = Glide.with(this)
 
-        (application as MasterApplication).service.getAllPosts().enqueue(object : Callback<ArrayList<Post>>{
-            override fun onResponse(call: Call<ArrayList<Post>>, response: Response<ArrayList<Post>>){
-                if(response.isSuccessful){
-                    val postList = response.body()
-                Log.d("owner","owner:"+postList!!.get(1).content)
-                    val adapter = PostAdapter(postList!!,LayoutInflater.from(this@OutstargramPostListActivity),glide)
-                    post_recyclerview.adapter = adapter
-                    post_recyclerview.layoutManager = LinearLayoutManager(this@OutstargramPostListActivity)
+        (application as MasterApplication).service.getAllPosts()
+            .enqueue(object : Callback<ArrayList<Post>> {
+                override fun onResponse(
+                    call: Call<ArrayList<Post>>,
+                    response: Response<ArrayList<Post>>
+                ) {
+                    if (response.isSuccessful) {
+                        val postList = response.body()
+                        Log.d("owner", "owner:" + postList!!.get(1).content)
+                        val adapter = PostAdapter(
+                            postList!!,
+                            LayoutInflater.from(this@OutstargramPostListActivity),
+                            glide
+                        )
+                        post_recyclerview.adapter = adapter
+                        post_recyclerview.layoutManager =
+                            LinearLayoutManager(this@OutstargramPostListActivity)
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+                override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+        user_info.setOnClickListener {
+            startActivity(Intent(this@OutstargramPostListActivity, OutstargramUserInfoActivity::class.java))
+        }
+        my_list.setOnClickListener {
+            startActivity(Intent(this@OutstargramPostListActivity, OutstargramMyPostListActivity::class.java))
+        }
+        upload.setOnClickListener {
+            startActivity(Intent(this@OutstargramPostListActivity, OutstargramUploadActivity::class.java))
+        }
+
     }
 }
 
@@ -62,7 +84,7 @@ class PostAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = inflater.inflate(R.layout.outstargram_item_view,parent,false)
+        val view = inflater.inflate(R.layout.outstargram_item_view, parent, false)
         return ViewHolder(view)
     }
 

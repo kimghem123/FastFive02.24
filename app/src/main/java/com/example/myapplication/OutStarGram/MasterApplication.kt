@@ -1,8 +1,7 @@
-package com.example.myapplication
+package com.example.myapplication.OutStarGram
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Interceptor
@@ -67,4 +66,5 @@ class MasterApplication : Application() {
         if (token == "null") return null
         else return token
     }
+
 }
