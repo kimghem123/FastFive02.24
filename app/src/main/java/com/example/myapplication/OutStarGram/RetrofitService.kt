@@ -1,6 +1,8 @@
 package com.example.myapplication.OutStarGram
 
 import com.example.myapplication.PersonFromServer
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -34,6 +36,13 @@ interface RetrofitService {
         @Field("password") password: String
     ):Call<User> //token만 받이만 User타입 사용 가능
 
-    @GET("/instagram/post/list/all/")
+    @GET("instagram/post/list/all/")
     fun getAllPosts():Call<ArrayList<Post>>
+
+    @Multipart //파트가 여러개
+    @POST("instagram/post/")
+    fun uploadPost(
+        @Part image: MultipartBody.Part,
+        @Part ("content")requstBody: RequestBody
+    ):Call<Post>
 }
