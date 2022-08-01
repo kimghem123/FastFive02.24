@@ -61,19 +61,31 @@ class OutstargramUploadActivity : AppCompatActivity() {
                 )
             )
         }
-        user_info.setOnClickListener {
-            startActivity(
-                Intent(
-                    this@OutstargramUploadActivity,
-                    OutstargramUserInfoActivity::class.java
-                )
-            )
-        }
+
         my_list.setOnClickListener {
             startActivity(
                 Intent(
                     this@OutstargramUploadActivity,
                     OutstargramMyPostListActivity::class.java
+                )
+            )
+        }
+
+        upload.setOnClickListener {
+            finish()
+            startActivity(
+                Intent(
+                    this@OutstargramUploadActivity,
+                    OutstargramUploadActivity::class.java
+                )
+            )
+        }
+
+        user_info.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@OutstargramUploadActivity,
+                    OutstargramUserInfoActivity::class.java
                 )
             )
         }
@@ -98,9 +110,9 @@ class OutstargramUploadActivity : AppCompatActivity() {
     }
 
     fun uploadPost(){
-        val file = File(filePath)
+        val file = File(filePath) //파일경로로 이미지 file 생성
         val fileRequsetBody = RequestBody.create(MediaType.parse("image/*"), file)
-        //requsetBody를 만드는데 타입은 image이다,실제로 file을 넣어줌
+        //requsetBody를 만드는데 타입은 image이다,실제로 이미지 file을 넣어줌
         val part = MultipartBody.Part.createFormData("image", file.name, fileRequsetBody)
         //이미지를 보낼때 쪼개서 보내기 때문에 multipart
         val content = RequestBody.create(MediaType.parse("text/plain"), getContent())
@@ -111,7 +123,13 @@ class OutstargramUploadActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val post = response.body()
                         Log.d("pathh", post!!.content!!)
-                        Log.d("pathh", "11")
+                        finish()
+                        startActivity(
+                            Intent(
+                                this@OutstargramUploadActivity,
+                                OutstargramMyPostListActivity::class.java
+                            )
+                        )
                     }
                 }
 

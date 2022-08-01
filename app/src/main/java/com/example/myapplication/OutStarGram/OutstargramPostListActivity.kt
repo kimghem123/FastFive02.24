@@ -34,6 +34,76 @@ class OutstargramPostListActivity : AppCompatActivity() {
 
         glide = Glide.with(this)
 
+        postList()
+
+        user_info.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@OutstargramPostListActivity,
+                    OutstargramUserInfoActivity::class.java
+                )
+            )
+        }
+        my_list.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@OutstargramPostListActivity,
+                    OutstargramMyPostListActivity::class.java
+                )
+            )
+        }
+        upload.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@OutstargramPostListActivity,
+                    OutstargramUploadActivity::class.java
+                )
+            )
+        }
+
+        change_sort.setOnClickListener {
+            sortPostList()
+        }
+
+        change_original.setOnClickListener {
+            postList()
+        }
+
+    }
+
+    /* fun changeRecycle(postList: ArrayList<Post>){
+         postList.sortBy { it.content }
+         val adapter = PostAdapter(
+             postList!!,
+             LayoutInflater.from(this@OutstargramPostListActivity),
+             glide
+         )
+         post_recyclerview.adapter = adapter
+         post_recyclerview.layoutManager =
+             LinearLayoutManager(this@OutstargramPostListActivity)
+         }
+
+     fun changeOriginal(postList: ArrayList<Post>){
+         val adapter = PostAdapter(
+             postList!!,
+             LayoutInflater.from(this@OutstargramPostListActivity),
+             glide
+         )
+         post_recyclerview.adapter = adapter
+         post_recyclerview.layoutManager =
+             LinearLayoutManager(this@OutstargramPostListActivity)
+     }
+
+     fun savePostList(postList: ArrayList<Post>){
+         val sp = getSharedPreferences("postList_sp",Context.MODE_PRIVATE)
+         val editor = sp.edit()
+         val gson = Gson()
+         val json = gson.toJson(postList)
+         editor.putString("postList_sp",json)
+         editor.commit()
+     }*/
+
+    fun postList() {
         (application as MasterApplication).service.getAllPosts()
             .enqueue(object : Callback<ArrayList<Post>> {
                 override fun onResponse(
@@ -42,7 +112,6 @@ class OutstargramPostListActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         val postList = response.body()
-                        savePostList(postList!!)
                         val adapter = PostAdapter(
                             postList!!,
                             LayoutInflater.from(this@OutstargramPostListActivity),
@@ -58,65 +127,33 @@ class OutstargramPostListActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-
-        user_info.setOnClickListener {
-            startActivity(Intent(this@OutstargramPostListActivity, OutstargramUserInfoActivity::class.java))
-        }
-        my_list.setOnClickListener {
-            startActivity(Intent(this@OutstargramPostListActivity, OutstargramMyPostListActivity::class.java))
-        }
-        upload.setOnClickListener {
-            startActivity(Intent(this@OutstargramPostListActivity, OutstargramUploadActivity::class.java))
-        }
-
-        change_sort.setOnClickListener {
-            val sp = getSharedPreferences("postList_sp",Context.MODE_PRIVATE)
-            val json = sp.getString("postList_sp","null")
-            val gson = Gson()
-            val storedData :ArrayList<Post> = gson.fromJson(json,object : TypeToken<ArrayList<Post?>>() {}.type)
-            changeRecycle(storedData)
-        }
-
-        change_original.setOnClickListener {
-            val sp = getSharedPreferences("postList_sp",Context.MODE_PRIVATE)
-            val json = sp.getString("postList_sp","null")
-            val gson = Gson()
-            val storedData :ArrayList<Post> = gson.fromJson(json,object : TypeToken<ArrayList<Post?>>() {}.type)
-            changeOriginal(storedData)
-        }
-
     }
 
-    fun changeRecycle(postList: ArrayList<Post>){
-        postList.sortBy { it.content }
-        val adapter = PostAdapter(
-            postList!!,
-            LayoutInflater.from(this@OutstargramPostListActivity),
-            glide
-        )
-        post_recyclerview.adapter = adapter
-        post_recyclerview.layoutManager =
-            LinearLayoutManager(this@OutstargramPostListActivity)
-        }
+    fun sortPostList() {
+        (application as MasterApplication).service.getAllPosts()
+            .enqueue(object : Callback<ArrayList<Post>> {
+                override fun onResponse(
+                    call: Call<ArrayList<Post>>,
+                    response: Response<ArrayList<Post>>
+                ) {
+                    if (response.isSuccessful) {
+                        val postList = response.body()
+                        postList!!.sortBy { it.content }
+                        val adapter = PostAdapter(
+                            postList!!,
+                            LayoutInflater.from(this@OutstargramPostListActivity),
+                            glide
+                        )
+                        post_recyclerview.adapter = adapter
+                        post_recyclerview.layoutManager =
+                            LinearLayoutManager(this@OutstargramPostListActivity)
+                    }
+                }
 
-    fun changeOriginal(postList: ArrayList<Post>){
-        val adapter = PostAdapter(
-            postList!!,
-            LayoutInflater.from(this@OutstargramPostListActivity),
-            glide
-        )
-        post_recyclerview.adapter = adapter
-        post_recyclerview.layoutManager =
-            LinearLayoutManager(this@OutstargramPostListActivity)
-    }
-
-    fun savePostList(postList: ArrayList<Post>){
-        val sp = getSharedPreferences("postList_sp",Context.MODE_PRIVATE)
-        val editor = sp.edit()
-        val gson = Gson()
-        val json = gson.toJson(postList)
-        editor.putString("postList_sp",json)
-        editor.commit()
+                override fun onFailure(call: Call<ArrayList<Post>>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
     }
 }
 
@@ -143,7 +180,7 @@ class PostAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.postOwner.setText(postList.get(position).owner)
+        holder.postOwner.setText(postList.get(position).owner_profile.get("username").toString())
         holder.postContent.setText(postList.get(position).content)
         glide.load(postList.get(position).image).into(holder.postImage)
     }

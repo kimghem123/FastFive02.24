@@ -37,12 +37,16 @@ interface RetrofitService {
     ):Call<User> //token만 받이만 User타입 사용 가능
 
     @GET("instagram/post/list/all/")
-    fun getAllPosts():Call<ArrayList<Post>>
+    fun getAllPosts(
+    ):Call<ArrayList<Post>>
 
     @Multipart //파트가 여러개
     @POST("instagram/post/")
     fun uploadPost(
         @Part image: MultipartBody.Part,
-        @Part ("content")requstBody: RequestBody
+        @Part ("content")requestBody: RequestBody
     ):Call<Post>
+
+    @GET("instagram/post/list/")
+    fun getUserPostList():Call<ArrayList<Post>>
 }
