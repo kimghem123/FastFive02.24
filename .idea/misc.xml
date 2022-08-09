@@ -52,6 +52,8 @@
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_library.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_login.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_main2.xml" value="0.34791666666666665" />
+        <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_my_tube.xml" value="0.2515625" />
+        <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_my_tube_detail.xml" value="0.2515625" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_network.xml" value="0.20185185185185187" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_outstargram_my_post_list.xml" value="0.25" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_outstargram_post_list.xml" value="0.25" />
@@ -63,6 +65,7 @@
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_tap_pager.xml" value="0.34791666666666665" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/activity_tap_pager2.xml" value="0.29101019462465244" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/item_view.xml" value="0.34791666666666665" />
+        <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/mytube_item_view.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/network_item_view.xml" value="0.346875" />
         <entry key="..\:/Users/kimguiheum/StudioProjects/FastFive02.24/app/src/main/res/layout/outstargram_item_view.xml" value="0.34791666666666665" />
       </map>

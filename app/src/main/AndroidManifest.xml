@@ -16,6 +16,18 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MyTube.MyTubeDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyTube.MyTubeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".OutStarGram.OutstargramUploadActivity"
             android:exported="false" />
         <activity
@@ -32,13 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".OutStarGram.EmailSignupActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".PermissionActivity"
             android:exported="true" />

@@ -1,5 +1,6 @@
 package com.example.myapplication.OutStarGram
 
+import com.example.myapplication.MyTube.Mytube
 import com.example.myapplication.PersonFromServer
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -49,4 +50,7 @@ interface RetrofitService {
 
     @GET("instagram/post/list/")
     fun getUserPostList():Call<ArrayList<Post>>
+
+    @GET("youtube/list/")
+    fun getYoutubeList():Call<ArrayList<Mytube>>
 }
