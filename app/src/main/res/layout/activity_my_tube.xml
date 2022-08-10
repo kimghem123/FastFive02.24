@@ -21,7 +21,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:padding="16dp"
         android:id="@+id/mytube_list_recycler"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

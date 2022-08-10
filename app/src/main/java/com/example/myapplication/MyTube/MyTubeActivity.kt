@@ -9,12 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.example.myapplication.OutStarGram.MasterApplication
 import com.example.myapplication.OutStarGram.Post
 import com.example.myapplication.R
+import com.example.myapplication.databinding.ActivityMyTubeBinding
+import com.example.myapplication.databinding.MytubeItemViewBinding
 import kotlinx.android.synthetic.main.activity_library.*
 import kotlinx.android.synthetic.main.activity_my_tube.*
 import retrofit2.Call
@@ -22,17 +25,20 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyTubeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMyTubeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityMyTubeBinding.inflate(layoutInflater)
+        val view = binding.root
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_tube)
+        setContentView(view)
 
         (application as MasterApplication).service.getYoutubeList()
-            .enqueue(object : Callback<ArrayList<Mytube>>{
+            .enqueue(object : Callback<ArrayList<Mytube>> {
                 override fun onResponse(
                     call: Call<ArrayList<Mytube>>,
                     response: Response<ArrayList<Mytube>>
                 ) {
-                    if(response.isSuccessful){
+                    if (response.isSuccessful) {
                         val glide = Glide.with(this@MyTubeActivity)
                         val myTubeList = response.body()
                         val adapter = MyTubeAdapter(
@@ -41,8 +47,9 @@ class MyTubeActivity : AppCompatActivity() {
                             glide,
                             this@MyTubeActivity
                         )
-                        mytube_list_recycler.adapter = adapter
-
+                        binding.mytubeListRecycler.adapter = adapter
+                        binding.mytubeListRecycler.layoutManager =
+                            LinearLayoutManager(this@MyTubeActivity)
                     }
                 }
 
@@ -51,6 +58,8 @@ class MyTubeActivity : AppCompatActivity() {
                 }
             })
     }
+
+
 }
 
 class MyTubeAdapter(
@@ -59,19 +68,19 @@ class MyTubeAdapter(
     val glide: RequestManager,
     val activity: Activity
 ) : RecyclerView.Adapter<MyTubeAdapter.ViewHolder>() {
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(binding: MytubeItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         val title: TextView
         val content: TextView
         val thumbnail: ImageView
 
         init {
-            title = itemView.findViewById(R.id.mytube_title)
-            thumbnail = itemView.findViewById(R.id.mytube_thumbnail)
-            content = itemView.findViewById(R.id.mytube_content)
+            title = binding.mytubeTitle
+            thumbnail = binding.mytubeThumbnail
+            content = binding.mytubeContent
             itemView.setOnClickListener {
-                val position:Int = absoluteAdapterPosition
+                val position: Int = absoluteAdapterPosition
                 val intent = Intent(activity, MyTubeDetailActivity::class.java)
-                intent.putExtra("video_url",myTubeList.get(position).video)
+                intent.putExtra("video_url", myTubeList.get(position).video)
                 activity.startActivity(intent)
             }
         }
@@ -79,7 +88,7 @@ class MyTubeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = inflater.inflate(R.layout.mytube_item_view, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(MytubeItemViewBinding.bind(view))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

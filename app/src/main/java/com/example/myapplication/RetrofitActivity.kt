@@ -77,7 +77,12 @@ class RetrofitActivity : AppCompatActivity() {
         })*/
 
         //POST 2
+
+        val personList2 = ArrayList<PersonFromServer>()
+        val personList = arrayListOf<PersonFromServer>()
         val person = PersonFromServer(name = "곰돌이2", age = 21, intro = "와구와구")
+        personList.add(person)
+        personList2.add(person)
         service.createStudentEasy(person).enqueue(object : Callback<PersonFromServer> {
             override fun onResponse(
                 call: Call<PersonFromServer>,
